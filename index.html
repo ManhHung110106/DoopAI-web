@@ -3,29 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoopAI - Ứng dụng Chăm sóc Sức khỏe Tinh thần</title>
+    <title>DoopAI</title>
     <link rel="icon" href="assets/logo.png">  <!-- Favicon for the website -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="app-container">
-        <div class="sidebar">
-            <div class="logo">
-                <img src="assets/logo.png" alt="DoopAI Logo" id="logo-img">
-                <h1>DoopAI</h1>
+        <div class="mobile-header">
+            <div class="logo-mobile">
+                <img src="/assets/logo.png" alt="DoopAI Logo" id="logo-img-mobile">
+            </div>
+            <div class="menu-toggle-container">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="/assets/logo.png" alt="DoopAI Logo" id="logo-img">
+                    <h1>DoopAI</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <nav>
                 <ul>
-                    <li class="active"><i class="fas fa-brain"></i> Phân tích EEG</li>
-                    <li><i class="fas fa-wave-square"></i> Sóng Isochronic</li>
-                    <li><i class="fas fa-comment-dots"></i> Trợ lý Tâm lý AI</li>
-                    <li><i class="fas fa-chart-line"></i> Thống kê</li>
-                    <li><i class="fas fa-cog"></i> Cài đặt</li>
+                    <li class="active" data-section="eeg-analysis"><i class="fas fa-brain"></i> Phân tích EEG</li>
+                    <li data-section="isochronic-tones"><i class="fas fa-wave-square"></i> Sóng Isochronic</li>
+                    <li data-section="ai-assistant"><i class="fas fa-comment-dots"></i> Trợ lý Tâm lý AI</li>
+                    <li data-section="statistics"><i class="fas fa-chart-line"></i> Thống kê</li>
+                    <li data-section="settings"><i class="fas fa-cog"></i> Cài đặt</li>
                 </ul>
             </nav>
             <div class="user-profile">
-                <img src="assets/logo.png" alt="User Avatar" id="avatar-img">
+                <img src="/assets/logo.png" alt="User Avatar" id="avatar-img">
                 <div>
                     <h3>Người dùng</h3>
                     <p>Đang hoạt động</p>
@@ -33,99 +49,438 @@
             </div>
         </div>
         <div class="main-content">
-            <header>
-                <div class="header-title">
-                    <h2>Phân tích Sóng Não</h2>
-                    <p>Theo dõi trạng thái tinh thần của bạn</p>
-                </div>
-                <div class="device-status connected">
-                    <i class="fas fa-bluetooth"></i>
-                    <span>Thiết bị EEG đã kết nối</span>
-                </div>
-            </header>
-            <div class="dashboard">
-                <div class="brain-state-card">
-                    <h3>Trạng thái hiện tại</h3>
-                    <div class="brain-state">
-                        <div class="state-indicator focused">
-                            <i class="fas fa-bullseye"></i>
-                            <span>Tập trung</span>
-                        </div>
-                        <div class="state-level">
-                            <div class="level-bar">
-                                <div class="level-fill" style="width: 75%;"></div>
+            <div class="section-content" id="eeg-analysis">
+                <header>
+                    <div class="header-title">
+                        <h2>Phân tích Sóng Não</h2>
+                        <p>Theo dõi trạng thái tinh thần của bạn</p>
+                    </div>
+                    <div class="device-status connected">
+                        <i class="fas fa-bluetooth"></i>
+                        <span>Thiết bị EEG đã kết nối</span>
+                    </div>
+                </header>
+                <div class="dashboard">
+                    <div class="brain-state-card">
+                        <h3>Trạng thái hiện tại</h3>
+                        <div class="brain-state">
+                            <div class="state-indicator focused">
+                                <i class="fas fa-bullseye"></i>
+                                <span>Tập trung</span>
                             </div>
-                            <span>75%</span>
+                            <div class="state-level">
+                                <div class="level-bar">
+                                    <div class="level-fill" style="width: 75%;"></div>
+                                </div>
+                                <span>75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wave-analysis">
+                        <h3>Phân tích Sóng Não</h3>
+                        <div class="wave-types">
+                            <div class="wave-type">
+                                <div class="wave-label">
+                                    <span class="dot delta"></span>
+                                    <span>Delta</span>
+                                </div>
+                                <div class="wave-value">15%</div>
+                            </div>
+                            <div class="wave-type">
+                                <div class="wave-label">
+                                    <span class="dot theta"></span>
+                                    <span>Theta</span>
+                                </div>
+                                <div class="wave-value">20%</div>
+                            </div>
+                            <div class="wave-type">
+                                <div class="wave-label">
+                                    <span class="dot alpha"></span>
+                                    <span>Alpha</span>
+                                </div>
+                                <div class="wave-value">25%</div>
+                            </div>
+                            <div class="wave-type">
+                                <div class="wave-label">
+                                    <span class="dot beta"></span>
+                                    <span>Beta</span>
+                                </div>
+                                <div class="wave-value">35%</div>
+                            </div>
+                            <div class="wave-type">
+                                <div class="wave-label">
+                                    <span class="dot gamma"></span>
+                                    <span>Gamma</span>
+                                </div>
+                                <div class="wave-value">5%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eeg-visualization">
+                        <h3>Dữ liệu EEG Thời gian thực</h3>
+                        <canvas id="eegChart"></canvas>
+                    </div>
+                    <div class="recommendation-card">
+                        <h3>Đề xuất</h3>
+                        <div class="recommendation">
+                            <div class="rec-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div class="rec-content">
+                                <h4>Sóng Alpha Boost</h4>
+                                <p>Sóng isochronic giúp tăng cường tập trung và sáng tạo</p>
+                                <button class="play-btn"><i class="fas fa-play"></i> Phát</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-assistant-card">
+                        <h3>Trợ lý Tâm lý AI</h3>
+                        <div class="chat-preview">
+                            <div class="message ai">
+                                <img src="/assets/logo.png" alt="AI Avatar" id="ai-avatar-img">
+                                <div class="message-content">
+                                    <p>Dựa trên dữ liệu EEG, bạn đang trong trạng thái tập trung cao. Đây là thời điểm tốt để giải quyết các vấn đề phức tạp hoặc học tập.</p>
+                                </div>
+                            </div>
+                            <button class="chat-btn">Trò chuyện với trợ lý tâm lý AI</button>
                         </div>
                     </div>
                 </div>
-                <div class="wave-analysis">
-                    <h3>Phân tích Sóng Não</h3>
-                    <div class="wave-types">
-                        <div class="wave-type">
-                            <div class="wave-label">
-                                <span class="dot delta"></span>
-                                <span>Delta</span>
+            </div>
+            
+            <div class="section-content" id="isochronic-tones" style="display: none;">
+                <header>
+                    <div class="header-title">
+                        <h2>Sóng Isochronic</h2>
+                        <p>Thư viện sóng âm thanh cho sức khỏe tinh thần</p>
+                    </div>
+                </header>
+                <div class="isochronic-library">
+                    <div class="category-filter">
+                        <button class="category-btn active">Tất cả</button>
+                        <button class="category-btn">Tập trung</button>
+                        <button class="category-btn">Thư giãn</button>
+                        <button class="category-btn">Ngủ</button>
+                        <button class="category-btn">Sáng tạo</button>
+                    </div>
+                    
+                    <div class="tones-grid">
+                        <div class="tone-card">
+                            <div class="tone-image" style="background-color: #3a7bd5;">
+                                <i class="fas fa-brain"></i>
                             </div>
-                            <div class="wave-value">15%</div>
+                            <div class="tone-info">
+                                <h3>Alpha Focus</h3>
+                                <p>Tăng cường tập trung và sáng tạo</p>
+                                <div class="tone-meta">
+                                    <span><i class="fas fa-clock"></i> 20 phút</span>
+                                    <span><i class="fas fa-wave-square"></i> 10Hz</span>
+                                </div>
+                                <div class="tone-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <button class="info-btn"><i class="fas fa-info-circle"></i></button>
+                                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="wave-type">
-                            <div class="wave-label">
-                                <span class="dot theta"></span>
-                                <span>Theta</span>
+                        
+                        <div class="tone-card">
+                            <div class="tone-image" style="background-color: #4CAF50;">
+                                <i class="fas fa-spa"></i>
                             </div>
-                            <div class="wave-value">20%</div>
+                            <div class="tone-info">
+                                <h3>Deep Relaxation</h3>
+                                <p>Giảm căng thẳng và thư giãn sâu</p>
+                                <div class="tone-meta">
+                                    <span><i class="fas fa-clock"></i> 30 phút</span>
+                                    <span><i class="fas fa-wave-square"></i> 7Hz</span>
+                                </div>
+                                <div class="tone-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <button class="info-btn"><i class="fas fa-info-circle"></i></button>
+                                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="wave-type">
-                            <div class="wave-label">
-                                <span class="dot alpha"></span>
-                                <span>Alpha</span>
+                        
+                        <div class="tone-card">
+                            <div class="tone-image" style="background-color: #9C27B0;">
+                                <i class="fas fa-moon"></i>
                             </div>
-                            <div class="wave-value">25%</div>
+                            <div class="tone-info">
+                                <h3>Sleep Enhancer</h3>
+                                <p>Cải thiện chất lượng giấc ngủ</p>
+                                <div class="tone-meta">
+                                    <span><i class="fas fa-clock"></i> 45 phút</span>
+                                    <span><i class="fas fa-wave-square"></i> 3Hz</span>
+                                </div>
+                                <div class="tone-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <button class="info-btn"><i class="fas fa-info-circle"></i></button>
+                                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="wave-type">
-                            <div class="wave-label">
-                                <span class="dot beta"></span>
-                                <span>Beta</span>
+                        
+                        <div class="tone-card">
+                            <div class="tone-image" style="background-color: #FF9800;">
+                                <i class="fas fa-lightbulb"></i>
                             </div>
-                            <div class="wave-value">35%</div>
-                        </div>
-                        <div class="wave-type">
-                            <div class="wave-label">
-                                <span class="dot gamma"></span>
-                                <span>Gamma</span>
+                            <div class="tone-info">
+                                <h3>Creative Flow</h3>
+                                <p>Kích thích sáng tạo và trực giác</p>
+                                <div class="tone-meta">
+                                    <span><i class="fas fa-clock"></i> 25 phút</span>
+                                    <span><i class="fas fa-wave-square"></i> 8.5Hz</span>
+                                </div>
+                                <div class="tone-controls">
+                                    <button class="play-btn"><i class="fas fa-play"></i></button>
+                                    <button class="info-btn"><i class="fas fa-info-circle"></i></button>
+                                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                                </div>
                             </div>
-                            <div class="wave-value">5%</div>
                         </div>
                     </div>
                 </div>
-                <div class="eeg-visualization">
-                    <h3>Dữ liệu EEG Thời gian thực</h3>
-                    <canvas id="eegChart"></canvas>
-                </div>
-                <div class="recommendation-card">
-                    <h3>Đề xuất</h3>
-                    <div class="recommendation">
-                        <div class="rec-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <div class="rec-content">
-                            <h4>Sóng Alpha Boost</h4>
-                            <p>Sóng isochronic giúp tăng cường tập trung và sáng tạo</p>
-                            <button class="play-btn"><i class="fas fa-play"></i> Phát</button>
-                        </div>
+            </div>
+            
+            <div class="section-content" id="ai-assistant" style="display: none;">
+                <header>
+                    <div class="header-title">
+                        <h2>Trợ lý Tâm lý AI</h2>
+                        <p>Hỗ trợ sức khỏe tinh thần 24/7</p>
                     </div>
-                </div>
-                <div class="ai-assistant-card">
-                    <h3>Trợ lý Tâm lý AI</h3>
-                    <div class="chat-preview">
+                </header>
+                <div class="ai-chat-interface">
+                    <div class="chat-history">
+                        <div class="chat-date">Hôm nay</div>
+                        
                         <div class="message ai">
-                            <img src="assets/logo.png" alt="AI Avatar" id="ai-avatar-img">
+                            <img src="/assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
                             <div class="message-content">
-                                <p>Dựa trên dữ liệu EEG, bạn đang trong trạng thái tập trung cao. Đây là thời điểm tốt để giải quyết các vấn đề phức tạp hoặc học tập.</p>
+                                <p>Xin chào! Tôi là trợ lý AI tâm lý của DoopAI. Tôi có thể giúp gì cho bạn hôm nay?</p>
                             </div>
                         </div>
-                        <button class="chat-btn">Trò chuyện với trợ lý tâm lý AI</button>
+                        
+                        <div class="message user">
+                            <div class="message-content">
+                                <p>Tôi cảm thấy hơi căng thẳng về công việc gần đây.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="message ai">
+                            <img src="/assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
+                            <div class="message-content">
+                                <p>Tôi hiểu cảm giác đó. Căng thẳng trong công việc là điều nhiều người gặp phải. Dữ liệu EEG của bạn cho thấy mức độ căng thẳng nhẹ. Bạn có thể thử một số bài tập thở sâu hoặc nghe sóng isochronic Alpha để thư giãn.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="message ai">
+                            <img src="/assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
+                            <div class="message-content">
+                                <p>Bạn muốn tôi hướng dẫn bạn một bài tập thở ngắn không?</p>
+                            </div>
+                        </div>
+                        
+                        <div class="message user">
+                            <div class="message-content">
+                                <p>Vâng, tôi muốn thử.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="message ai">
+                            <img src="/assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
+                            <div class="message-content">
+                                <p>Tuyệt vời! Hãy thử bài tập thở 4-7-8:</p>
+                                    <ol>1. Hít vào qua mũi trong 4 giây</ol>
+                                    <ol>2. Giữ hơi thở trong 7 giây</ol>
+                                    <ol>3. Thở ra qua miệng trong 8 giây</ol>
+                                <p>Lặp lại 4 lần. Bạn có thể bắt đầu ngay bây giờ, tôi sẽ hướng dẫn bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="chat-tools">
+                            <button><i class="fas fa-microphone"></i></button>
+                            <button><i class="fas fa-paperclip"></i></button>
+                        </div>
+                        <input type="text" placeholder="Nhập tin nhắn của bạn..." class="chat-input">
+                        <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-content" id="statistics" style="display: none;">
+                <header>
+                    <div class="header-title">
+                        <h2>Thống kê & Phân tích</h2>
+                        <p>Theo dõi tiến trình sức khỏe tinh thần của bạn</p>
+                    </div>
+                    <div class="time-filter">
+                        <button class="time-btn active">Tuần</button>
+                        <button class="time-btn">Tháng</button>
+                        <button class="time-btn">Năm</button>
+                    </div>
+                </header>
+                
+                <div class="stats-dashboard">
+                    <div class="stats-card wide">
+                        <h3>Xu hướng trạng thái tinh thần</h3>
+                        <div class="stats-chart-container">
+                            <canvas id="mentalStateChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3>Thời gian sử dụng</h3>
+                        <div class="stats-chart-container">
+                            <canvas id="usageChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card">
+                        <h3>Phân bố sóng não</h3>
+                        <div class="stats-chart-container">
+                            <canvas id="brainwaveChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-card wide">
+                        <h3>Nhật ký hoạt động</h3>
+                        <div class="activity-log">
+                            <div class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-brain"></i></div>
+                                <div class="activity-content">
+                                    <h4>Điện não đồ EEG</h4>
+                                    <p>30 phút phân tích sóng não</p>
+                                    <span class="activity-time">Hôm nay, 09:30</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-music"></i></div>
+                                <div class="activity-content">
+                                    <h4>Sóng Isochronic</h4>
+                                    <p>20 phút Alpha Focus</p>
+                                    <span class="activity-time">Hôm nay, 08:45</span>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-item">
+                                <div class="activity-icon"><i class="fas fa-comment-dots"></i></div>
+                                <div class="activity-content">
+                                    <h4>Trò chuyện với AI</h4>
+                                    <p>15 phút tư vấn tâm lý</p>
+                                    <span class="activity-time">Hôm qua, 19:20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-content" id="settings" style="display: none;">
+                <header>
+                    <div class="header-title">
+                        <h2>Cài đặt</h2>
+                        <p>Tùy chỉnh ứng dụng DoopAI</p>
+                    </div>
+                </header>
+                
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h3>Tài khoản</h3>
+                        <div class="settings-card">
+                            <div class="profile-settings">
+                                <div class="profile-image">
+                                    <img src="/assets/logo.png" alt="User Avatar" id="settings-avatar">
+                                    <button class="change-avatar-btn"><i class="fas fa-camera"></i></button>
+                                </div>
+                                <div class="profile-info">
+                                    <div class="form-group">
+                                        <label>Họ và tên</label>
+                                        <input type="text" value="Người dùng" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" value="user@example.com" class="form-control">
+                                    </div>
+                                    <button class="save-btn">Lưu thay đổi</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h4>Bảo mật</h4>
+                            <div class="form-group">
+                                <label>Mật khẩu hiện tại</label>
+                                <input type="password" placeholder="••••••••" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Mật khẩu mới</label>
+                                <input type="password" placeholder="••••••••" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Xác nhận mật khẩu mới</label>
+                                <input type="password" placeholder="••••••••" class="form-control">
+                            </div>
+                            <button class="save-btn">Cập nhật mật khẩu</button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>Thiết bị</h3>
+                        <div class="settings-card">
+                            <h4>Thiết bị EEG đã kết nối</h4>
+                            <div class="device-item">
+                                <div class="device-info">
+                                    <i class="fas fa-bluetooth"></i>
+                                    <div>
+                                        <h5>DoopAI Headband</h5>
+                                        <p>Đã kết nối</p>
+                                    </div>
+                                </div>
+                                <button class="disconnect-btn">Ngắt kết nối</button>
+                            </div>
+                            <button class="add-device-btn"><i class="fas fa-plus"></i> Thêm thiết bị mới</button>
+                        </div>
+                        
+                        <div class="settings-card">
+                            <h4>Cài đặt ứng dụng</h4>
+                            <div class="setting-item">
+                                <div>
+                                    <h5>Chế độ tối</h5>
+                                    <p>Bật chế độ tối cho ứng dụng</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div>
+                                    <h5>Thông báo</h5>
+                                    <p>Nhận thông báo từ ứng dụng</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div>
+                                    <h5>Lưu dữ liệu EEG</h5>
+                                    <p>Tự động lưu dữ liệu EEG để phân tích sau</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -136,13 +491,13 @@
     <div class="modal" id="aiAssistantModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Trợ lý Tâm lý AI </h2>
+                <h2>Trợ lý AI Tâm lý</h2>
                 <span class="close-modal">&times;</span>
             </div>
             <div class="modal-body">
                 <div class="chat-container">
                     <div class="message ai">
-                        <img src="assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
+                        <img src="/assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
                         <div class="message-content">
                             <p>Xin chào! Tôi là trợ lý AI tâm lý của DoopAI. Tôi có thể giúp gì cho bạn hôm nay?</p>
                         </div>
@@ -153,7 +508,7 @@
                         </div>
                     </div>
                     <div class="message ai">
-                        <img src="assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
+                        <img src="/assets/logo.png" alt="AI Avatar" class="ai-avatar-small">
                         <div class="message-content">
                             <p>Tôi hiểu cảm giác đó. Căng thẳng trong công việc là điều nhiều người gặp phải. Dữ liệu EEG của bạn cho thấy mức độ căng thẳng nhẹ. Bạn có thể thử một số bài tập thở sâu hoặc nghe sóng isochronic Alpha để thư giãn. Bạn muốn tôi hướng dẫn bạn một bài tập thở ngắn không?</p>
                         </div>
@@ -170,5 +525,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="images.js"></script>
     <script src="script.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>
